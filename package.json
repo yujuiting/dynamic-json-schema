@@ -1,0 +1,35 @@
+{
+  "name": "dynamic-json-schema",
+  "version": "0.0.0",
+  "scripts": {
+    "test": "mocha --compilers ts:ts-node/register --require source-map-support/register src/**/*.spec.ts",
+    "clear": "rm -rf dist src/*.js src/*.js.map src/*.d.ts",
+    "build": "tsc -p tsconfig.build.json && cp package.json dist"
+  },
+  "author": "yujuiting <yujuiting@me.com>",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "@types/chai": "^3.4.35",
+    "@types/deep-equal": "^1.0.0",
+    "@types/diff": "^0.0.31",
+    "@types/mocha": "^2.2.39",
+    "@types/node": "^7.0.5",
+    "@types/uuid": "^2.0.29",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "mocha-typescript": "^1.0.22",
+    "source-map-support": "^0.4.11",
+    "ts-node": "^2.1.0",
+    "tslint": "^5.0.0",
+    "tslint-eslint-rules": "^4.0.0",
+    "typedoc": "^0.5.10",
+    "typescript": "^2.2.1"
+  },
+  "dependencies": {
+    "deep-equal": "^1.0.1",
+    "diff": "^3.2.0",
+    "interpolate": "^0.1.0",
+    "uuid": "^3.0.1"
+  }
+}
