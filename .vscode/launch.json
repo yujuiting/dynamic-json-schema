@@ -7,6 +7,20 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceRoot}/example/exporter.js",
+      "sourceMaps": true,
+	    "stopOnEntry": true,
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach",
+      "port": 9229
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Mocha",
       "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
       "cwd": "${workspaceRoot}",
@@ -15,7 +29,7 @@
       "runtimeExecutable": null,
       "args": [
         "--require", "source-map-support/register",
-        "src/**/*.spec.js"
+        "out/**/*.spec.js"
       ]
     }
   ]

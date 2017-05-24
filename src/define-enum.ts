@@ -12,11 +12,19 @@ export interface DefineEnumOption {
   value: number;
 }
 
+const builtInValidator = new DefineValidator(
+  'built-in-enum-validator',
+  (value, options) => !!options.find(option => option.value === value),
+  `Value {value} is not contained in {options}`,
+  false,
+  true
+);
+
 export class DefineEnum extends DefineDataType {
 
   static parse(json: DefineEnumJSON, schema: DefineSchema = runtimeSchema): DefineEnum {
-    const dataType = new DefineEnum(json.options);
-    (<any>dataType).id = json.id;
+    const dataType = new DefineEnum(json.name, json.options);
+    (<any>dataType).__id= json.__id;
     dataType.name = json.name;
     DefineDataType.parseValidators(json, schema)
                   .forEach(ve => dataType.addValidator(ve));
@@ -24,8 +32,10 @@ export class DefineEnum extends DefineDataType {
     return dataType;
   }
 
-  constructor(public readonly options: DefineEnumOption[] = []) {
-    super([enumValidator(options)]);
+  constructor(name: string, public readonly options: DefineEnumOption[] = []) {
+    // super([enumValidator(options)]);
+    super(name, [builtInValidator.use(options)]);
+    (<any>this).__type = 'datatype(enum)';
   }
 
   addOption(key: string, value: number): this;
@@ -62,7 +72,7 @@ export class DefineEnum extends DefineDataType {
     return this;
   }
 
-  resetOptions(options: DefineEnumOption[]) {
+  resetOptions(options: DefineEnumOption[] = []) {
     this.options.splice(0, this.options.length);
     options.forEach(option => this.options.push(option));
   }
@@ -75,13 +85,13 @@ export class DefineEnum extends DefineDataType {
   }
 }
 
-export function enumValidator(options: DefineEnumOption[]): DefineValidator {
+// export function enumValidator(options: DefineEnumOption[]): DefineValidator {
 
-  return new DefineValidator(
-    function test(value: any): boolean {
-      return options.some(o => o.value === value);
-    },
-    `Value {value} is not in [${ options.map(o => `${ o.key } = ${ o.value }`).join(', ') }]`,
-    false
-  );
-}
+//   return new DefineValidator(
+//     function test(value: any): boolean {
+//       return options.some(o => o.value === value);
+//     },
+//     `Value {value} is not in [${ options.map(o => `${ o.key } = ${ o.value }`).join(', ') }]`,
+//     false
+//   );
+// }

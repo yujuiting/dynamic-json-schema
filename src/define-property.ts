@@ -9,6 +9,7 @@ export interface DefinePropertyJSON extends DefineObjectJSON {
 }
 
 export interface DefinePropertyOptions {
+  name?: string;
   dataType?: DefineDataType;
   allowNull?: boolean;
 }
@@ -17,8 +18,8 @@ export class DefineProperty extends DefineObject {
 
   static parse(json: DefinePropertyJSON, schema: DefineSchema = runtimeSchema): DefineProperty {
     const dataType = new WeakDataType(schema, json.dataType);
-    const prop = new DefineProperty(dataType, { allowNull: json.allowNull });
-    (<any>prop).id = json.id;
+    const prop = new DefineProperty(json.name, dataType, { allowNull: json.allowNull });
+    (<any>prop).__id= json.__id;
     prop.name = json.name;
     return prop;
   }
@@ -27,39 +28,40 @@ export class DefineProperty extends DefineObject {
   
   allowNull = false;
 
-  private _dataType: WeakDataType = new WeakDataType(this.schema);
+  dataType: WeakDataType = new WeakDataType(this.schema);
 
-  get dataType(): DefineDataType|undefined { return this._dataType.get(); }
-  
-  set dataType(dataType: DefineDataType|undefined) {
-    this._dataType = dataType ? dataType.getWeakDataType() : new WeakDataType(this.schema);
-  }
-
-  constructor(dataTypeOrOptions: DefineDataType|WeakDataType|DefinePropertyOptions,
-              public options: DefinePropertyOptions = {}) {
-    super();
+  constructor(name: string,
+              dataTypeOrOptions: DefineDataType|WeakDataType|DefinePropertyOptions,
+              options: DefinePropertyOptions = {}) {
+    super(name);
+    (<any>this).__type = 'property';
 
     if (dataTypeOrOptions instanceof DefineDataType ||
         dataTypeOrOptions instanceof WeakDataType) {
 
       this.setDataType(dataTypeOrOptions);
-      this.allowNull = options.allowNull !== void 0 ? options.allowNull : this.allowNull;
 
     } else {
 
       if (dataTypeOrOptions.dataType !== void 0) {
         this.setDataType(dataTypeOrOptions.dataType);
       }
-      this.allowNull = dataTypeOrOptions.allowNull !== void 0 ? dataTypeOrOptions.allowNull : this.allowNull;
+      
+      options = {
+        allowNull: dataTypeOrOptions.allowNull
+      };
 
     }
+    
+    this.name = options.name !== void 0 ? options.name : this.name;
+    this.allowNull = options.allowNull !== void 0 ? options.allowNull : this.allowNull;
   }
 
   setDataType(dataType: DefineDataType|WeakDataType) {
     if (dataType instanceof DefineDataType) {
-      this.dataType = dataType;
+      this.dataType = dataType.getWeakDataType();
     } else {
-      this._dataType = dataType;
+      this.dataType = dataType;
     }
   }
 
@@ -73,17 +75,25 @@ export class DefineProperty extends DefineObject {
       return errors;
     }
 
-    errors = this.dataType ?
-             this.dataType.test(value) :
-             [new Error(`Missing datatype (${ this._dataType.id })`)];
+    const dataType = this.dataType.get();
+
+    if (dataType) {
+      errors = dataType.test(value);
+    } else {
+      errors = [new Error(`Missing datatype (${ this.dataType.id })`)];
+    }
     
     return errors;
+  }
+
+  clone(): DefineProperty {
+    return new DefineProperty(this.name, this.dataType, { allowNull: this.allowNull });
   }
 
   toJSON(): DefinePropertyJSON {
     return {
       __type: 'property',
-      id: this.id,
+      __id: this.__id,
       name: this.name,
       dataType: this.dataType ? this.dataType.id : '',
       allowNull: this.allowNull,

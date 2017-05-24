@@ -3,84 +3,106 @@ import { DefineProperty, DefinePropertyJSON, DefinePropertyOptions } from './def
 import { DefineValidator, DefineValidatorExecution } from './define-validator';
 import { DefineSchema, runtimeSchema } from "./define-schema";
 import { getMapKeys, getMapValues, mapToObject, mapKeyTransform } from './utilities';
+import { isObject, notNull } from './validators';
 
 export interface DefineStructJSON extends DefineDataTypeJSON {
-  property: { [name: string]: DefinePropertyJSON };
+  properties: DefinePropertyJSON[];
 }
+
+export interface DefinePropertyMap {
+  [name: string]: DefineDataType|DefinePropertyOptions
+}
+
+const builtInValidator = new DefineValidator(
+  'built-in-struct-validator',
+  (value) => value !== null && typeof value === 'object',
+  `Value {value} should be an object`,
+  false,
+  true
+);
 
 export class DefineStruct extends DefineDataType {
 
   static parse(json: DefineStructJSON, schema: DefineSchema = runtimeSchema): DefineStruct {
-    const structType = new DefineStruct();
-    (<any>structType).id = json.id;
+    const structType = new DefineStruct(json.name);
+    (<any>structType).__id= json.__id;
     structType.name = json.name;
     DefineDataType.parseValidators(json, schema)
                   .forEach(ve => structType.addValidator(ve));
 
-    for (const key in json.property) {
-      const prop = DefineProperty.parse(json.property[key], schema);
-      structType.addProperty(key, prop);
+    for (const key in json.properties) {
+      const prop = DefineProperty.parse(json.properties[key], schema);
+      structType.addProperty(prop);
     }
     return structType;
   }
 
-  private property: Map<string, DefineProperty> = new Map();
+  properties: DefineProperty[] = [];
 
-  constructor(properties: { [propertyName: string]: DefineDataType|DefinePropertyOptions } = {}) {
-    super();
+  constructor(name: string, properties?: DefinePropertyMap | DefineProperty[]) {
+    super(name, [builtInValidator]);
+    (<any>this).__type = 'datatype(struct)';
 
-    for (let propertyName in properties) {
-      this.addProperty(propertyName, properties[propertyName]);
+    if (Array.isArray(properties)) {
+      properties.forEach(property => this.addProperty(property));
+    } else if (properties) {
+      for (let propertyName in properties) {
+        const dataTypeOrOptions = properties[propertyName];
+        if (dataTypeOrOptions instanceof DefineDataType) {
+          this.addProperty(dataTypeOrOptions, { name: propertyName });
+        } else {
+          this.addProperty(dataTypeOrOptions);
+        }        
+      }
     }
   }
 
-  addProperty(name: string, property: DefineProperty);
-  addProperty(name: string, options: DefinePropertyOptions);
-  addProperty(name: string, dataType: DefineDataType, options: DefinePropertyOptions);
-  addProperty(name: string,
-              dataTypeOrOptionsOrProperty: DefineDataType|DefinePropertyOptions|DefineProperty,
+  addProperty(property: DefineProperty);
+  addProperty(options: DefinePropertyOptions);
+  addProperty(dataType: DefineDataType, options: DefinePropertyOptions);
+  addProperty(dataTypeOrOptionsOrProperty: DefineDataType|DefinePropertyOptions|DefineProperty,
               options?: DefinePropertyOptions) {
-    if (this.hasProperty(name)) {
-      throw new Error(`Property name collision ${ name }`);
-    }
+
+    let property: DefineProperty;
 
     if (dataTypeOrOptionsOrProperty instanceof DefineProperty) {
-      this.property.set(name, dataTypeOrOptionsOrProperty);
+      property = dataTypeOrOptionsOrProperty;
     } else {
-      const prop = new DefineProperty(dataTypeOrOptionsOrProperty, options);
-      prop.name = name;
-      this.property.set(name, prop);
+      property = new DefineProperty(dataTypeOrOptionsOrProperty.name, dataTypeOrOptionsOrProperty, options);
     }
+
+    if (this.hasProperty(property.name)) {
+      throw new Error(`Property name collision ${ property.name }`);
+    }
+
+    this.properties.push(property);
   }
 
   removeProperty(name: string) {
-    this.property.delete(name);
-  }
-
-  removeAllProperties() {
-    this.property.clear();
+    const index = this.properties.findIndex(property => property.name === name);
+    if (index !== -1) {
+      this.properties.splice(index, 1);
+    }
   }
 
   hasProperty(name: string): boolean {
-    return this.property.has(name);
+    return this.properties.findIndex(property => property.name === name) !== -1;
   }
 
-  getProperty(name: string): DefineProperty|undefined {
-    return this.property.get(name);
-  }
-
-  getProperties(): DefineProperty[] {
-    return getMapValues(this.property);
-  }
-
-  getPropertyNames(): string[] {
-    return getMapKeys(this.property);
+  findProperty(name: string): DefineProperty|undefined {
+    return this.properties.find(property => property.name === name);
   }
 
   getRelevantDataTypes(): DefineDataType[] {
     const dataTypes = super.getRelevantDataTypes();
-    this.getProperties()
-        .map(prop => prop.dataType ? prop.dataType.getRelevantDataTypes() : [])
+    this.properties
+        .map(property => {
+          const dataType = property.dataType.get();
+          if (!dataType) {
+            return []
+          }
+          return dataType.getRelevantDataTypes();
+        })
         .reduce((prev, curr) => prev.concat(curr))
         .forEach(dataType => dataTypes.push(dataType));
     return dataTypes;
@@ -90,8 +112,10 @@ export class DefineStruct extends DefineDataType {
     const errors = super.test(value);
     // do not continue test if already fail
     if (errors.length === 0) {
-      this.property.forEach((property, name) =>
-        property.test(value[name]).forEach(err => errors.push(err)));
+      this.properties.forEach(property => {
+        const propertyErrors = property.test(value[property.name]);
+        propertyErrors.forEach(e => errors.push(e));
+      });
     }
     return errors;
   }
@@ -99,10 +123,7 @@ export class DefineStruct extends DefineDataType {
   toJSON(): DefineStructJSON {
     const json = super.toJSON() as DefineStructJSON;
     json.__type = 'datatype(struct)';
-    json.property = {};
-    this.property.forEach((property, name) =>
-      json.property[name] = property.toJSON());
-
+    json.properties = this.properties.map(property => property.toJSON());
     return json;
   }
 

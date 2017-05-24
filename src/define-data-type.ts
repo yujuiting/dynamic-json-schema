@@ -2,7 +2,7 @@ import { DefineObject, DefineObjectJSON } from './define-object';
 import { DefineValidator, DefineValidatorExecution, WeakValidator } from './define-validator';
 import { DefineSchema, runtimeSchema } from "./define-schema";
 import { mapKeyTransform, mapToObject } from "./utilities";
-import deepEqual = require('deep-equal');
+import { isEqual } from 'lodash';
 
 export class WeakDataType {
   constructor(public schema: DefineSchema, public id: string = '') {}
@@ -27,8 +27,8 @@ export interface DefineDataTypeJSON extends DefineObjectJSON {
 export class DefineDataType extends DefineObject {
 
   static parse(json: DefineDataTypeJSON, schema: DefineSchema = runtimeSchema): DefineDataType {
-    const dataType = new DefineDataType();
-    (<any>dataType).id = json.id;
+    const dataType = new DefineDataType(json.name);
+    (<any>dataType).__id= json.__id;
     dataType.name = json.name;
     DefineDataType.parseValidators(json, schema)
                   .forEach(ve => dataType.addValidator(ve));
@@ -46,21 +46,22 @@ export class DefineDataType extends DefineObject {
     });
   }
 
-  schema: DefineSchema = runtimeSchema;
+  schema: DefineSchema;
 
   validatorExecutions: DefineValidatorExecution[] = [];
 
-  constructor(validators: Array<DefineValidator|DefineValidatorExecution> = []) {
-    super();
+  constructor(name: string, validators: Array<DefineValidator|DefineValidatorExecution> = []) {
+    super(name);
+    (<any>this).__type = 'datatype';
     validators.forEach(validator => this.addValidator(validator));
-    this.schema.addDataType(this, false);
+    runtimeSchema.addDataType(this, false);
   }
 
   addValidator(validator: DefineValidator|DefineValidatorExecution,
                ...args): void {
     let validatorExecution: DefineValidatorExecution;
     if (validator instanceof DefineValidator) {
-      validatorExecution = validator.use(args);
+      validatorExecution = validator.use(...args);
     } else {
       validatorExecution = validator;
     }
@@ -71,13 +72,13 @@ export class DefineDataType extends DefineObject {
                   ...args): void {
     let validatorExecution: DefineValidatorExecution;
     if (validator instanceof DefineValidator) {
-      validatorExecution = validator.use(args);
+      validatorExecution = validator.use(...args);
     } else {
       validatorExecution = validator;
     }
 
     let index = this.validatorExecutions.findIndex(item =>
-      deepEqual(item, validatorExecution));
+      isEqual(item, validatorExecution));
     
     if (index === -1) {
       return;
@@ -112,19 +113,19 @@ export class DefineDataType extends DefineObject {
   }
 
   getWeakDataType(): WeakDataType {
-    return new WeakDataType(this.schema, this.id);
+    return new WeakDataType(this.schema, this.__id);
   }
 
   toJSON(): DefineDataTypeJSON {
     const json: DefineDataTypeJSON = {
       __type: 'datatype',
-      id: this.id,
+      __id: this.__id,
       name: this.name,
       validators: this.validatorExecutions
       .filter(ve => {
         const v = ve.validator.get();
-        // ignore missing or not pure validator
-        return v ? v.isPure : false
+        // ignore missing or not built-in validator
+        return v ? !v.isBuiltIn : false
       })
       .map(execution => ({
         validator: execution.validator.id,

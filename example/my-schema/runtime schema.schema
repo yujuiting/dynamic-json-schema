@@ -1,0 +1,27 @@
+{
+	"__type": "schema",
+	"__id": "c783c433-5e37-478f-854e-4ee444131ec4",
+	"name": "runtime schema",
+	"validators": [
+		"#max-string-length",
+		"#max-value",
+		"#min-value",
+		"#range-value",
+		"#is-string",
+		"#is-number",
+		"#is-object",
+		"#is-array",
+		"#is-boolean",
+		"#is-contained-in",
+		"#not-null",
+		"#built-in-struct-validator",
+		"#built-in-enum-validator"
+	],
+	"dataTypes": [
+		"907e32ae-ca24-4475-86ff-4d62ed8d19f6",
+		"c47291e3-ad36-41a9-82cc-f5f92fb3b038",
+		"fdb212b8-4e0a-4ec4-8bce-e374fd51973f",
+		"caf39573-1081-4102-88e3-5f8327da37cd",
+		"aa3ea628-68a5-4a47-8f79-fed2b9f2d5f6"
+	]
+}

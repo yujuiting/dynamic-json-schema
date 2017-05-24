@@ -77,3 +77,27 @@ export function resolveNameCollision(name: string): string {
     return `${ name } (2)`;
   }
 }
+
+export function isSchemaJSON(data: any): boolean {
+  return data && data.__type === 'schema';
+}
+
+export function isDataTypeJSON(data: any): boolean {
+  return data && typeof data.__type === 'string' && data.__type.match(/^datatype/);
+}
+
+export function isEnumTypeJSON(data: any): boolean {
+  return data && data.__type === 'datatype(enum)';
+}
+
+export function isArrayTypeJSON(data: any): boolean {
+  return data && data.__type === 'datatype(array)';
+}
+
+export function isStructTypeJSON(data: any): boolean {
+  return data && data.__type === 'datatype(struct)';
+}
+
+export function isValidatorJSON(data: any): boolean {
+  return data && data.__type === 'validator';
+}

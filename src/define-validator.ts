@@ -2,11 +2,18 @@ import { DefineObject, DefineObjectJSON } from './define-object';
 import { DefineSchema, runtimeSchema } from "./define-schema";
 
 export class WeakValidator {
+
   constructor(public schema: DefineSchema, public id: string = '') {}
+
   get(): DefineValidator | undefined {
     return this.schema.findValidator(this.id);
   }
+
   isNull(): boolean { return this.id.length === 0; }
+
+  clone(): WeakValidator {
+    return new WeakValidator(this.schema, this.id);
+  }
 }
 
 const interpolate: (text: string, args: object) => string = require('interpolate');
@@ -27,30 +34,47 @@ export interface DefineValidatorVariable {
 
 export class DefineValidator extends DefineObject {
 
-  static parse(json: DefineValidatorJSON, schema: DefineSchema = runtimeSchema): DefineValidator {
-    const validator = new DefineValidator(eval(`(${ json.fn })`), json.errorMessage);
-    (<any>validator).id = json.id;
+  static parse(json: DefineValidatorJSON): DefineValidator {
+    const validator = new DefineValidator(json.name, eval(`(${ json.fn })`), json.errorMessage);
+    (<any>validator).__id= json.__id;
     validator.name = json.name;
     return validator;
   }
 
-  schema: DefineSchema = runtimeSchema;
+  schema: DefineSchema;
 
   requireParameters: DefineValidatorVariable[] = [];
 
-  constructor(public fn: DefineValidatorFn,
+  constructor(name: string,
+              public fn: DefineValidatorFn,
               public errorMessage: string,
-              public readonly isPure = true) {
-    super();
+              /**
+               * static validator will be export
+               * dynamic validator will be created in runtime
+               */
+              public readonly isStatic = true,
+              /**
+               * built in validator nor export and do not be record by data-type
+               */
+              public readonly isBuiltIn = false) {
+    super(name);
+    (<any>this).__type = 'validator';
+    
     if (typeof fn !== 'function') {
       throw new Error('DefineValidator require a function.');
     }
     this.parseParameters();
-    this.schema.addValidator(this);
+    runtimeSchema.addValidator(this);
+
+    if (!isStatic && name.length === 0) {
+      throw new Error('non-static validator require an unique name');
+    }
+
+    (<any>this).__id = `#${ name }`;
   }
 
-  use(args: any[] = []): DefineValidatorExecution {
-    return new DefineValidatorExecution(new WeakValidator(this.schema, this.id), args);
+  use(...args: any[]): DefineValidatorExecution {
+    return new DefineValidatorExecution(new WeakValidator(this.schema, this.__id), args);
   }
 
   parseParameters(): void {
@@ -77,8 +101,9 @@ export class DefineValidator extends DefineObject {
       return;
     }
     
-    this.requireParameters = paramNames.map(name =>
-      ({ name, type: 'any' } as DefineValidatorVariable));
+    this.requireParameters = paramNames
+      .filter(name => name !== 'value')
+      .map(name => ({ name, type: 'any' } as DefineValidatorVariable));
   }
 
   checkArguments(args: any[]): boolean {
@@ -105,7 +130,7 @@ export class DefineValidator extends DefineObject {
   /**
    * Return error if fail or catch.
    */
-  test(...args: any[]): Error | null {
+  test(value, ...args: any[]): Error | null {
     if (!this.checkArguments(args)) {
       return new Error(`validator require arguments: ${
         this.requireParameters.map(variable => variable.name + ': ' + variable.type).join(', ')
@@ -113,12 +138,12 @@ export class DefineValidator extends DefineObject {
     }
     
     const context = this.createContext(args);
-    context['value'] = args[0];
-    context['args'] = args.slice(1);
+    context['value'] = value;
+    context['args'] = args;
 
     try {
       // catch fn execute
-      if (this.fn.apply(context, args)) {
+      if (this.fn.apply(context, arguments)) {
         return null;
       }
       let errorMessage = interpolate(this.errorMessage, context);
@@ -132,13 +157,13 @@ export class DefineValidator extends DefineObject {
   }
 
   getWeakValidator(): WeakValidator {
-    return new WeakValidator(this.schema, this.id);
+    return new WeakValidator(this.schema, this.__id);
   }
 
   toJSON(): DefineValidatorJSON {
     return {
       __type: 'validator',
-      id: this.id,
+      __id: this.__id,
       name: this.name,
       fn: this.fn.toString(),
       errorMessage: this.errorMessage
@@ -148,7 +173,10 @@ export class DefineValidator extends DefineObject {
 }
 
 export class DefineValidatorExecution {
-  constructor(public validator: WeakValidator, public args: any[] = []) {}
+
+  constructor(public validator: WeakValidator,
+              public args: any[] = []) {}
+
   test(value: any): Error | null {
     const validator = this.validator.get();
     if (validator) {
@@ -156,5 +184,11 @@ export class DefineValidatorExecution {
     } else {
       return new Error(`Validator (${ this.validator.id }) is missing`);
     }
+  }
+
+  clone(): DefineValidatorExecution {
+    return new DefineValidatorExecution(
+      this.validator,
+      this.args.slice(0));
   }
 }

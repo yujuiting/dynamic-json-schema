@@ -6,14 +6,6 @@
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-3.5.2.tgz#c11cd2817d3a401b7ba0f5a420f35c56139b1c1e"
 
-"@types/deep-equal@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@types/deep-equal/-/deep-equal-1.0.0.tgz#9ebeaa73d1fc4791f038a5f1440e0449ea968495"
-
-"@types/diff@^0.0.31":
-  version "0.0.31"
-  resolved "https://registry.yarnpkg.com/@types/diff/-/diff-0.0.31.tgz#391943720a04f4ba290794ea90c1504c10d30025"
-
 "@types/fs-extra@0.0.33":
   version "0.0.33"
   resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-0.0.33.tgz#a8719c417b080c012d3497b28e228ac09745fdf2"
@@ -28,9 +20,9 @@
   version "9.1.9"
   resolved "https://registry.yarnpkg.com/@types/highlight.js/-/highlight.js-9.1.9.tgz#ed6336955eaf233b75eb7923b9b1f373d045ef01"
 
-"@types/lodash@^4.14.37":
-  version "4.14.63"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.63.tgz#5ac475f55bfdc62bc88c4239dbc482f2f3bead93"
+"@types/lodash@^4.14.37", "@types/lodash@^4.14.64":
+  version "4.14.64"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.64.tgz#979cf3a3d4a368670840bf9b3e448dc33ffe84ee"
 
 "@types/marked@0.0.28":
   version "0.0.28"
@@ -201,10 +193,6 @@ deep-eql@^0.1.3:
   resolved "https://registry.yarnpkg.com/deep-eql/-/deep-eql-0.1.3.tgz#ef558acab8de25206cd713906d74e56930eb69f2"
   dependencies:
     type-detect "0.1.1"
-
-deep-equal@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.0.1.tgz#f5d260292b660e084eff4cdbc9f08ad3247448b5"
 
 diff@3.2.0, diff@^3.1.0, diff@^3.2.0:
   version "3.2.0"
@@ -462,7 +450,7 @@ lodash.keys@^3.0.0:
     lodash.isarguments "^3.0.0"
     lodash.isarray "^3.0.0"
 
-lodash@^4.13.1:
+lodash@^4.13.1, lodash@^4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -648,6 +636,12 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
+rxjs@^5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.4.0.tgz#a7db14ab157f9d7aac6a56e655e7a3860d39bf26"
+  dependencies:
+    symbol-observable "^1.0.1"
+
 "semver@2 || 3 || 4 || 5", semver@^5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
@@ -731,6 +725,10 @@ supports-color@3.1.2:
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
+
+symbol-observable@^1.0.1:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.0.4.tgz#29bf615d4aa7121bdd898b22d4b3f9bc4e2aa03d"
 
 ts-node@^2.1.0:
   version "2.1.2"

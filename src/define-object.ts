@@ -11,13 +11,14 @@ export type DefineObjectType = 'datatype'
 
 export interface DefineObjectJSON {
   __type: DefineObjectType;
-  id: string;
+  __id: string;
   name: string;
 }
 
 export abstract class DefineObject {
-  readonly id: string = uuid();
-  name: string = '';
-  constructor() {}
+  readonly __type: DefineObjectType;
+  readonly __id: string = uuid();
+  constructor(public name: string = '') {}
   abstract toJSON(): DefineObjectJSON;
+  toString(): string { return `${ this.__type }(${ this.__id })`; }
 }

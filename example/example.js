@@ -8,7 +8,7 @@ const { isString, isNumber, isObject, isArray, isBoolean, maxStringLength } = re
 const fs = require('fs');
 const path = require('path');
 
-const writemode = false;
+const writemode = true;
 
 let schema;
 const parser = new SchemaParser();

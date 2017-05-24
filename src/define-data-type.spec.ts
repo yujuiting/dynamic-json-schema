@@ -5,6 +5,7 @@ import { DefineValidator } from "./define-validator";
 import * as validators from "./validators";
 
 const hasContainValidator = new DefineValidator(
+  '',
   function (value: string) { return value.indexOf(this.contain) !== -1; },
   '{value} should contain {contain}'
 );
@@ -19,7 +20,7 @@ const hasContainValidator = new DefineValidator(
   }
 
   @test '(-)addValidator: should add validator' () {
-    const validator = new DefineValidator(value => true, 'never fail');
+    const validator = new DefineValidator('', value => true, 'never fail');
 
     expect(this.dataType.validatorExecutions.length).to.equal(1);
     this.dataType.addValidator(validator);

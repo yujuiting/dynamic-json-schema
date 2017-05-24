@@ -1,0 +1,17 @@
+{
+	"__type": "datatype",
+	"__id": "caf39573-1081-4102-88e3-5f8327da37cd",
+	"name": "controller-type",
+	"validators": [
+		{
+			"validator": "#is-contained-in",
+			"args": [
+				[
+					"KeyboardAndMouse",
+					"DualShock",
+					"XBox"
+				]
+			]
+		}
+	]
+}

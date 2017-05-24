@@ -1,0 +1,85 @@
+{
+	"__type": "datatype(struct)",
+	"__id": "aa3ea628-68a5-4a47-8f79-fed2b9f2d5f6",
+	"name": "input-mapping",
+	"validators": [],
+	"properties": [
+		{
+			"__type": "property",
+			"__id": "d89cd622-05fe-4417-a98f-280b00a75dfd",
+			"name": "Name",
+			"dataType": "907e32ae-ca24-4475-86ff-4d62ed8d19f6",
+			"allowNull": false
+		},
+		{
+			"__type": "property",
+			"__id": "8e466626-4537-4992-b0e4-6bc515281187",
+			"name": "ControllerType",
+			"dataType": "caf39573-1081-4102-88e3-5f8327da37cd",
+			"allowNull": false
+		},
+		{
+			"__type": "property",
+			"__id": "54a28948-cd28-44cb-941b-089402754e2b",
+			"name": "Category",
+			"dataType": "907e32ae-ca24-4475-86ff-4d62ed8d19f6",
+			"allowNull": false
+		},
+		{
+			"__type": "property",
+			"__id": "d0d5ea40-03e7-4ccc-ae4b-a6eb7976dfb4",
+			"name": "ContextType",
+			"dataType": "907e32ae-ca24-4475-86ff-4d62ed8d19f6",
+			"allowNull": false
+		},
+		{
+			"__type": "property",
+			"__id": "d987aa61-7a8c-4d3a-8df9-f57f4953b6fe",
+			"name": "Command",
+			"dataType": "907e32ae-ca24-4475-86ff-4d62ed8d19f6",
+			"allowNull": false
+		},
+		{
+			"__type": "property",
+			"__id": "100d235d-c364-40e3-b074-59ecb3d34bc1",
+			"name": "IsAxis",
+			"dataType": "c47291e3-ad36-41a9-82cc-f5f92fb3b038",
+			"allowNull": false
+		},
+		{
+			"__type": "property",
+			"__id": "538f5930-e87e-41f9-824a-987fd9b6da74",
+			"name": "Scale",
+			"dataType": "fdb212b8-4e0a-4ec4-8bce-e374fd51973f",
+			"allowNull": false
+		},
+		{
+			"__type": "property",
+			"__id": "db2e154c-0fd5-4d53-bc16-8fe672daf533",
+			"name": "PressingShift",
+			"dataType": "c47291e3-ad36-41a9-82cc-f5f92fb3b038",
+			"allowNull": false
+		},
+		{
+			"__type": "property",
+			"__id": "e5415709-4922-4762-9a38-0bb536a6f826",
+			"name": "PressingCtrl",
+			"dataType": "c47291e3-ad36-41a9-82cc-f5f92fb3b038",
+			"allowNull": false
+		},
+		{
+			"__type": "property",
+			"__id": "efd3f8f4-c197-4194-8d2b-b710d21d4ce1",
+			"name": "PressingAtl",
+			"dataType": "c47291e3-ad36-41a9-82cc-f5f92fb3b038",
+			"allowNull": false
+		},
+		{
+			"__type": "property",
+			"__id": "94194572-65a2-47ef-aab6-1279e07640ae",
+			"name": "PressingCmd",
+			"dataType": "c47291e3-ad36-41a9-82cc-f5f92fb3b038",
+			"allowNull": false
+		}
+	]
+}

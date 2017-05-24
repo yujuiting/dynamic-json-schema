@@ -10,6 +10,7 @@ import { DefineValidator,
 
   before() {
     this.validator = new DefineValidator(
+      '',
       value => value !== 0,
       '{value} should not be 0.'
     );
@@ -29,6 +30,7 @@ import { DefineValidator,
 
   @test '(-)parseParameters: should parse parameter of fn' () {
     const validator = new DefineValidator(
+      '',
       (param1, param2, another) => true,
       ''
     );
@@ -44,7 +46,7 @@ import { DefineValidator,
   @test '(+)parse: should parse json' () {
     const json: DefineValidatorJSON = {
       __type: 'validator',
-      id: 'fake-id',
+      __id: 'fake-id',
       name: 'a_validator',
       fn: 'function (value) { return value === 0; }',
       errorMessage: '{value} should be 0.'

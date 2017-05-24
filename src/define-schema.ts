@@ -1,10 +1,10 @@
 import { DefineObject, DefineObjectJSON } from "./define-object";
-import { DefineDataType, DefineDataTypeJSON } from "./define-data-type";
-import { DefineValidator, DefineValidatorJSON } from "./define-validator";
+import { DefineDataType } from "./define-data-type";
+import { DefineValidator } from "./define-validator";
 
 export interface DefineSchemaJSON extends DefineObjectJSON {
-  validators: DefineValidatorJSON[];
-  dataTypes: DefineDataTypeJSON[];
+  validators: string[];
+  dataTypes: string[];
 }
 
 export class DefineSchema extends DefineObject {
@@ -15,17 +15,41 @@ export class DefineSchema extends DefineObject {
 
   constructor(name: string) {
     super();
+    (<any>this).__type = 'schema';
     this.name = name;
   }
 
   addValidator(validator: DefineValidator) {
+    if (validator.schema === this) {
+      return
+    } else if (validator.schema !== void 0) {
+      validator.schema.removeValidator(validator);
+    }
+
+    validator.schema = this;
+
     if (this.validators.indexOf(validator) !== -1) {
       return;
     }
     this.validators.push(validator);
   }
 
+  removeValidator(validator: DefineValidator) {
+    const index = this.validators.indexOf(validator);
+    if (index !== -1) {
+      this.validators.splice(index, 1);
+    }
+  }
+
   addDataType(dataType: DefineDataType, checkRelevant = true) {
+    if (dataType.schema === this) {
+      return
+    } else if (dataType.schema !== void 0) {
+      dataType.schema.removeDataType(dataType);
+    }
+
+    dataType.schema = this;
+
     if (this.dataTypes.indexOf(dataType) !== -1) {
       return;
     }
@@ -37,12 +61,19 @@ export class DefineSchema extends DefineObject {
     }
   }
 
+  removeDataType(dataType: DefineDataType) {
+    const index = this.dataTypes.indexOf(dataType);
+    if (index !== -1) {
+      this.dataTypes.splice(index, 1);
+    }
+  }
+
   findValidator(id: string): DefineValidator | undefined {
-    return this.validators.find(validator => validator.id === id);
+    return this.validators.find(validator => validator.__id === id);
   }
 
   findDataType(id: string): DefineDataType | undefined {
-    return this.dataTypes.find(dataType => dataType.id === id);
+    return this.dataTypes.find(dataType => dataType.__id === id);
   }
 
   findValidatorByName(name: string): DefineValidator | undefined {
@@ -56,12 +87,15 @@ export class DefineSchema extends DefineObject {
   toJSON(): DefineSchemaJSON {
     return {
       __type: 'schema',
-      id: this.id,
+      __id: this.__id,
       name: this.name,
       validators: this.validators
-                      .filter(validator => validator.isPure)
-                      .map(validator => validator.toJSON()),
-      dataTypes: this.dataTypes.map(dataType => dataType.toJSON())
+        // .filter(validator => validator.isStatic)
+        // .map(validator => validator.toJSON()),
+        .map(validator => validator.__id),
+      dataTypes: this.dataTypes
+        // .map(dataType => dataType.toJSON())
+        .map(dataType => dataType.__id)
     };
   }
 }

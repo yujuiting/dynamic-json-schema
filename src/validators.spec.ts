@@ -11,7 +11,7 @@ import { DefineValidatorExecution } from './define-validator';
 
 @suite('max-string-length-validator') class StringLengthValidatorTestSuite {
   validator: DefineValidatorExecution;
-  constructor() { this.validator = maxStringLength.use([4]); }
+  constructor() { this.validator = maxStringLength.use(4); }
 
   @test'should pass test' () {
     expect(this.validator.test('fuck')).not.to.be.instanceof(Error);
@@ -24,7 +24,7 @@ import { DefineValidatorExecution } from './define-validator';
 
 @suite('max-value-validator') class MaxValueValidatorTestSuite {
   validator: DefineValidatorExecution;
-  constructor() { this.validator = maxValue.use([10]); }
+  constructor() { this.validator = maxValue.use(10); }
 
   @test'should pass test' () {
     expect(this.validator.test(5)).not.to.be.instanceof(Error);
@@ -37,7 +37,7 @@ import { DefineValidatorExecution } from './define-validator';
 
 @suite('min-value-validator') class MinValueValidatorTestSuite {
   validator: DefineValidatorExecution;
-  constructor() { this.validator = minValue.use([10]); }
+  constructor() { this.validator = minValue.use(10); }
 
   @test'should pass test' () {
     expect(this.validator.test(12)).not.to.be.instanceof(Error);

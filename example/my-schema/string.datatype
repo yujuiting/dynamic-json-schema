@@ -1,0 +1,11 @@
+{
+	"__type": "datatype",
+	"__id": "907e32ae-ca24-4475-86ff-4d62ed8d19f6",
+	"name": "string",
+	"validators": [
+		{
+			"validator": "#is-string",
+			"args": []
+		}
+	]
+}
