@@ -30,10 +30,10 @@ export class DefineStruct extends DefineDataType {
     DefineDataType.parseValidators(json, schema)
                   .forEach(ve => structType.addValidator(ve));
 
-    for (const key in json.properties) {
-      const prop = DefineProperty.parse(json.properties[key], schema);
+    json.properties.forEach(propertyJson => {
+      const prop = DefineProperty.parse(propertyJson, schema);
       structType.addProperty(prop);
-    }
+    });
     return structType;
   }
 
