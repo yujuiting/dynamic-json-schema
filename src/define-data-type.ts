@@ -50,6 +50,8 @@ export class DefineDataType extends DefineObject {
 
   validatorExecutions: DefineValidatorExecution[] = [];
 
+  readonly builtInValidatorExcutions: DefineValidatorExecution[] = [];
+
   constructor(name: string, validators: Array<DefineValidator|DefineValidatorExecution> = []) {
     super(name);
     (<any>this).__type = 'datatype';
@@ -65,7 +67,13 @@ export class DefineDataType extends DefineObject {
     } else {
       validatorExecution = validator;
     }
-    this.validatorExecutions.push(validatorExecution);
+
+    const v = validatorExecution.validator.get();
+    if (v && v.isBuiltIn) {
+      this.builtInValidatorExcutions.push(validatorExecution);
+    } else {
+      this.validatorExecutions.push(validatorExecution);
+    }
   }
 
   removeValidator(validator: DefineValidator|DefineValidatorExecution,
@@ -76,9 +84,12 @@ export class DefineDataType extends DefineObject {
     } else {
       validatorExecution = validator;
     }
-
-    let index = this.validatorExecutions.findIndex(item =>
-      isEqual(item, validatorExecution));
+    
+    const v = validatorExecution.validator.get();
+    let index = -1;
+    if (v && !v.isBuiltIn) {
+      index = this.validatorExecutions.findIndex(item => isEqual(item, validatorExecution));
+    }
     
     if (index === -1) {
       return;
@@ -103,6 +114,13 @@ export class DefineDataType extends DefineObject {
 
   test(value: any): Error[] {
     const errors: Error[] = [];
+    this.builtInValidatorExcutions.forEach(validatorExecution => {
+      const error = validatorExecution.test(value);
+      if (error) {
+        errors.push(error);
+      }
+    });
+
     this.validatorExecutions.forEach(validatorExecution => {
       const error = validatorExecution.test(value);
       if (error) {
