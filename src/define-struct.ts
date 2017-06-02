@@ -103,7 +103,7 @@ export class DefineStruct extends DefineDataType {
           }
           return dataType.getRelevantDataTypes();
         })
-        .reduce((prev, curr) => prev.concat(curr))
+        .reduce((prev, curr) => prev.concat(curr), [])
         .forEach(dataType => dataTypes.push(dataType));
     return dataTypes;
   }

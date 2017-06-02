@@ -109,7 +109,7 @@ export class DefineDataType extends DefineObject {
                   .filter(e => e.validator.get() !== undefined)
                   .map(e => e.validator.get() as DefineValidator);
                })
-               .reduce((prev, curr) => prev.concat(curr));
+               .reduce((prev, curr) => prev.concat(curr), []);
   }
 
   test(value: any): Error[] {

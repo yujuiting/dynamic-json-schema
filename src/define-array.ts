@@ -26,6 +26,10 @@ export class DefineArray extends DefineDataType {
   }
   
   getRelevantDataTypes(): DefineDataType[] {
+    if (!this.dataType) {
+      return [];
+    }
+
     const dataType = this.dataType.get();
 
     if (dataType) {
@@ -47,6 +51,9 @@ export class DefineArray extends DefineDataType {
     const errors = super.test(value);
     if (errors.length > 0) {
       return errors;
+    }
+    if (!this.dataType) {
+      return;
     }
 
     const dataType = this.dataType.get();
