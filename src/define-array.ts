@@ -14,6 +14,7 @@ export class DefineArray extends DefineDataType {
     const arrayType = new DefineArray(json.name, dataType);
     (<any>arrayType).__id= json.__id;
     arrayType.name = json.name;
+    DefineDataType.parseDataFromJSON(json, arrayType);
     return arrayType;
   }
 

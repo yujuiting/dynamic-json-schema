@@ -22,6 +22,9 @@ export interface DefineDataTypeJSON extends DefineObjectJSON {
     args?: any[]
 
   }[];
+  initValue: any;
+  serialize: string;
+  deserialize: string;
 }
 
 export class DefineDataType extends DefineObject {
@@ -32,7 +35,24 @@ export class DefineDataType extends DefineObject {
     dataType.name = json.name;
     DefineDataType.parseValidators(json, schema)
                   .forEach(ve => dataType.addValidator(ve));
+    DefineDataType.parseDataFromJSON(json, dataType);
     return dataType;
+  }
+
+  protected static parseDataFromJSON(json: DefineDataTypeJSON, to: DefineDataType) {
+    to.initValue = json.initValue;
+
+    if (json.serialize) {
+      try {
+        to.serializeFn = eval(`(${ json.serialize })`);
+      } catch (err) {}
+    }
+
+    if (json.deserialize) {
+      try {
+        to.deserializeFn = eval(`(${ json.deserialize })`);
+      } catch (err) {}
+    }
   }
 
   protected static parseValidators(json: DefineDataTypeJSON, schema: DefineSchema = runtimeSchema): DefineValidatorExecution[] {
@@ -50,6 +70,12 @@ export class DefineDataType extends DefineObject {
 
   validatorExecutions: DefineValidatorExecution[] = [];
 
+  initValue: string;
+
+  serializeFn: (value) => any = function (value) { return value; };
+
+  deserializeFn: (value) => any = function (value) { return value; };
+
   readonly builtInValidatorExcutions: DefineValidatorExecution[] = [];
 
   constructor(name: string, validators: Array<DefineValidator|DefineValidatorExecution> = []) {
@@ -57,6 +83,18 @@ export class DefineDataType extends DefineObject {
     (<any>this).__type = 'datatype';
     validators.forEach(validator => this.addValidator(validator));
     runtimeSchema.addDataType(this, false);
+  }
+
+  getInitValue(): any {
+    return eval(`(${ this.initValue })`);
+  }
+
+  serialize(value): any {
+    return this.serializeFn.call(null, value);
+  }
+
+  deserialize(value): any {
+    return this.deserializeFn.call(null, value);
   }
 
   addValidator(validator: DefineValidator|DefineValidatorExecution,
@@ -148,7 +186,10 @@ export class DefineDataType extends DefineObject {
       .map(execution => ({
         validator: execution.validator.id,
         args: execution.args
-      }))
+      })),
+      initValue: this.initValue,
+      serialize: this.serializeFn.toString(),
+      deserialize: this.deserializeFn.toString()
     }
     return json;
   }

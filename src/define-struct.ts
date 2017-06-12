@@ -13,14 +13,6 @@ export interface DefinePropertyMap {
   [name: string]: DefineDataType|DefinePropertyOptions
 }
 
-const builtInValidator = new DefineValidator(
-  'built-in-struct-validator',
-  (value) => value !== null && typeof value === 'object',
-  `Value {value} should be an object`,
-  false,
-  true
-);
-
 export class DefineStruct extends DefineDataType {
 
   static parse(json: DefineStructJSON, schema: DefineSchema = runtimeSchema): DefineStruct {
@@ -34,13 +26,14 @@ export class DefineStruct extends DefineDataType {
       const prop = DefineProperty.parse(propertyJson, schema);
       structType.addProperty(prop);
     });
+    DefineDataType.parseDataFromJSON(json, structType);
     return structType;
   }
 
   properties: DefineProperty[] = [];
 
   constructor(name: string, properties?: DefinePropertyMap | DefineProperty[]) {
-    super(name, [builtInValidator]);
+    super(name, [isObject]);
     (<any>this).__type = 'datatype(struct)';
 
     if (Array.isArray(properties)) {

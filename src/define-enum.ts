@@ -29,6 +29,7 @@ export class DefineEnum extends DefineDataType {
     DefineDataType.parseValidators(json, schema)
                   .forEach(ve => dataType.addValidator(ve));
     json.options.forEach(option => dataType.addOption(option.key, option.value));
+    DefineDataType.parseDataFromJSON(json, dataType);
     return dataType;
   }
 

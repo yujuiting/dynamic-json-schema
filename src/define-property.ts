@@ -6,6 +6,7 @@ import { DefineSchema, runtimeSchema } from "./define-schema";
 export interface DefinePropertyJSON extends DefineObjectJSON {
   dataType: string;
   allowNull?: boolean;
+  initValue: any;
 }
 
 export interface DefinePropertyOptions {
@@ -21,12 +22,15 @@ export class DefineProperty extends DefineObject {
     const prop = new DefineProperty(json.name, dataType, { allowNull: json.allowNull });
     (<any>prop).__id= json.__id;
     prop.name = json.name;
+    prop.initValue = json.initValue;
     return prop;
   }
 
   schema: DefineSchema = runtimeSchema;
   
   allowNull = false;
+
+  initValue: string;
 
   dataType: WeakDataType = new WeakDataType(this.schema);
 
@@ -56,6 +60,11 @@ export class DefineProperty extends DefineObject {
     this.name = options.name !== void 0 ? options.name : this.name;
     this.allowNull = options.allowNull !== void 0 ? options.allowNull : this.allowNull;
   }
+
+  getInitValue(): any {
+    return eval(`(${ this.initValue })`);
+  }
+
 
   setDataType(dataType: DefineDataType|WeakDataType) {
     if (dataType instanceof DefineDataType) {
@@ -97,6 +106,7 @@ export class DefineProperty extends DefineObject {
       name: this.name,
       dataType: this.dataType ? this.dataType.id : '',
       allowNull: this.allowNull,
+      initValue: this.initValue
     };
   }
 }

@@ -70,7 +70,9 @@ export class DefineValidator extends DefineObject {
       throw new Error('non-static validator require an unique name');
     }
 
-    (<any>this).__id = `#${ name }`;
+    if (!isStatic) {
+      (<any>this).__id = `#${ name }`;
+    }
   }
 
   use(...args: any[]): DefineValidatorExecution {
