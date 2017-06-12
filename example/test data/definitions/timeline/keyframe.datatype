@@ -1,0 +1,35 @@
+{
+  "__type": "datatype(struct)",
+  "__id": "5c21917c-d108-40f9-aa05-5a2972afe766",
+  "name": "keyframe",
+  "validators": [],
+  "initValue": null,
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }",
+  "properties": [
+    {
+      "__type": "property",
+      "__id": "9dd54dc4-d3f1-4c6d-a96c-f536645cba66",
+      "name": "NumVal",
+      "dataType": "3fcc0e3c-48ba-4bd3-963c-8b3f3d1e3f8d",
+      "allowNull": false,
+      "initValue": "[]"
+    },
+    {
+      "__type": "property",
+      "__id": "5ed15d1b-b0ca-48c3-996c-f5342ee798b7",
+      "name": "StrVal",
+      "dataType": "a6456948-10e2-4d1e-a83f-836296062112",
+      "allowNull": false,
+      "initValue": "[]"
+    },
+    {
+      "__type": "property",
+      "__id": "4c35eb15-ed51-4a0a-80e6-18e417be562e",
+      "name": "Float2Val",
+      "dataType": "e617a146-8276-4bdb-8170-2668481c21aa",
+      "allowNull": false,
+      "initValue": "[]"
+    }
+  ]
+}

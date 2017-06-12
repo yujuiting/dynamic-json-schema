@@ -1,0 +1,72 @@
+{
+  "__type": "datatype(struct)",
+  "__id": "3c6fb78a-f6a2-420a-9fa2-6fd9fc395fd6",
+  "name": "AKeyframe",
+  "validators": [],
+  "initValue": null,
+  "properties": [
+    {
+      "__type": "property",
+      "__id": "8b58adab-2386-4dde-8b23-4828a9eb3c3a",
+      "name": "Timestamp",
+      "dataType": "fdb212b8-4e0a-4ec4-8bce-e374fd51973f",
+      "allowNull": false
+    },
+    {
+      "__type": "property",
+      "__id": "c42519ae-17e4-4088-8f59-a8163f92bf47",
+      "name": "SomeProperty",
+      "dataType": "fdb212b8-4e0a-4ec4-8bce-e374fd51973f",
+      "allowNull": true
+    },
+    {
+      "__type": "property",
+      "__id": "89f71ddf-59b8-4360-b8f6-ed3acb6957e8",
+      "name": "AnotherProperty",
+      "dataType": "907e32ae-ca24-4475-86ff-4d62ed8d19f6",
+      "allowNull": true
+    },
+    {
+      "__type": "property",
+      "__id": "d8d039d2-14b5-4597-aaa8-929c39a29d79",
+      "name": "Weapon",
+      "dataType": "62c8cfbb-57fa-465d-a434-76e7595cfd48",
+      "allowNull": true
+    },
+    {
+      "__type": "property",
+      "__id": "7fbf1d98-b350-42b4-a180-6e925fdcc10a",
+      "name": "A",
+      "dataType": "9470554e-5fc2-4e22-80b4-227b3193564e",
+      "allowNull": true
+    },
+    {
+      "__type": "property",
+      "__id": "b2b32afb-e3c1-4da6-93f3-4f7111971d91",
+      "name": "B",
+      "dataType": "caf39573-1081-4102-88e3-5f8327da37cd",
+      "allowNull": true
+    },
+    {
+      "__type": "property",
+      "__id": "5d46b1de-0e57-4cb1-a217-5c8f542a4364",
+      "name": "C",
+      "dataType": "c47291e3-ad36-41a9-82cc-f5f92fb3b038",
+      "allowNull": true
+    },
+    {
+      "__type": "property",
+      "__id": "590ffd6f-51ad-40df-8d4f-cbf514adbb82",
+      "name": "D",
+      "dataType": "9e14f4f2-51c8-45f9-bc9d-195d4dfd3417",
+      "allowNull": true
+    },
+    {
+      "__type": "property",
+      "__id": "80500635-0add-4d85-a3b1-469fb940bf09",
+      "name": "E",
+      "dataType": "13f1673d-500a-4676-bffb-31f693c8b0c4",
+      "allowNull": true
+    }
+  ]
+}

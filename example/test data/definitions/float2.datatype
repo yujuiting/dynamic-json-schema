@@ -1,0 +1,32 @@
+{
+  "__type": "datatype(struct)",
+  "__id": "62aa2405-392c-4f64-af69-b60986ad7214",
+  "name": "float2",
+  "validators": [
+    {
+      "validator": "#is-string",
+      "args": []
+    }
+  ],
+  "initValue": "\"\"",
+  "serialize": "function (value) {\n  // value: { x: number, y: number }\n  value = value || { x: 0, y: 0 };\n  return \"{\" + value.x + \",\" + value.y + \"}\";\n}",
+  "deserialize": "function (value) {\n  // value: string\n  value = value || \"\";\n  var float2 = { x: 0, y: 0 };\n  var match = value.match(/\\d+/g);\n  if (match) {\n  \tfloat2.x = parseInt(match[0] || 0, 10);\n  \tfloat2.y = parseInt(match[1] || 0, 10);\n  }\n  return float2;\n}",
+  "properties": [
+    {
+      "__type": "property",
+      "__id": "9b886b85-f4e0-499a-bc72-db92b50a5341",
+      "name": "x",
+      "dataType": "fdb212b8-4e0a-4ec4-8bce-e374fd51973f",
+      "allowNull": false,
+      "initValue": "0"
+    },
+    {
+      "__type": "property",
+      "__id": "81c04a6d-85fe-4b48-989b-e1f99230c2b5",
+      "name": "y",
+      "dataType": "fdb212b8-4e0a-4ec4-8bce-e374fd51973f",
+      "allowNull": false,
+      "initValue": "0"
+    }
+  ]
+}

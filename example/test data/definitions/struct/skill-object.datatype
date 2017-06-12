@@ -1,0 +1,43 @@
+{
+  "__type": "datatype(struct)",
+  "__id": "13f1673d-500a-4676-bffb-31f693c8b0c4",
+  "name": "skill-object",
+  "validators": [
+    {
+      "validator": "#is-object",
+      "args": []
+    },
+    {
+      "validator": "#is-object",
+      "args": []
+    }
+  ],
+  "initValue": "{ \"Name\": \"Unnameed Skill\", \"AnimationID\": -1 }",
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }",
+  "properties": [
+    {
+      "__type": "property",
+      "__id": "3003158a-3c39-4b81-8708-eefac499fe2e",
+      "name": "Name",
+      "dataType": "9e14f4f2-51c8-45f9-bc9d-195d4dfd3417",
+      "allowNull": false
+    },
+    {
+      "__type": "property",
+      "__id": "212ce4d8-d7f2-41e7-b53b-e49bfcb5e633",
+      "name": "AnimationID",
+      "dataType": "fdb212b8-4e0a-4ec4-8bce-e374fd51973f",
+      "allowNull": true,
+      "initValue": "-1"
+    },
+    {
+      "__type": "property",
+      "__id": "4a6a146e-a7b5-4fda-90f3-a84eeaa565e5",
+      "name": "AnInt",
+      "dataType": "7c5f0a6c-1a0e-42c1-99f1-ad1fd346303d",
+      "allowNull": true,
+      "initValue": "0"
+    }
+  ]
+}

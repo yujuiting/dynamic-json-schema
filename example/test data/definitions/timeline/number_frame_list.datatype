@@ -1,0 +1,13 @@
+{
+  "__type": "datatype(array)",
+  "__id": "3fcc0e3c-48ba-4bd3-963c-8b3f3d1e3f8d",
+  "name": "number_frame_list",
+  "validators": [
+    {
+      "validator": "#is-array",
+      "args": []
+    }
+  ],
+  "initValue": null,
+  "dataType": "865cd422-7c91-42be-9cd0-213732ad2026"
+}

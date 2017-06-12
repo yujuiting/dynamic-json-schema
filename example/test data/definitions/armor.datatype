@@ -1,0 +1,22 @@
+{
+  "__type": "datatype(struct)",
+  "__id": "9470554e-5fc2-4e22-80b4-227b3193564e",
+  "name": "armor",
+  "validators": [],
+  "properties": [
+    {
+      "__type": "property",
+      "__id": "88535f71-a809-4312-83c9-510a20456601",
+      "name": "Name",
+      "dataType": "907e32ae-ca24-4475-86ff-4d62ed8d19f6",
+      "allowNull": false
+    },
+    {
+      "__type": "property",
+      "__id": "6cf4b41c-c929-490f-988e-70788317293b",
+      "name": "def",
+      "dataType": "fdb212b8-4e0a-4ec4-8bce-e374fd51973f",
+      "allowNull": false
+    }
+  ]
+}

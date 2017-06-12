@@ -1,0 +1,7 @@
+{
+  "__type": "validator",
+  "__id": "c88963aa-c44d-461d-a4f7-b5ac5f5d9654",
+  "name": "int-validator",
+  "fn": "function (value, max) {\n  //throw new Error(\"always throw\");\n  \n  if (!Number.isInteger(value)) {\n    return false;\n  }\n  \n  if (max) {\n    if (value > max) {\n      return false;\n    }\n  }\n  \n  var pow2_16 = Math.pow(2, 16);\n  \n  if (value > pow2_16 - 1) {\n    return false;\n  }\n  \n  if (value < -pow2_16) {\n    return false;\n  }\n  \n  return true;\n}",
+  "errorMessage": "{value} should be int, and small then {max}"
+}

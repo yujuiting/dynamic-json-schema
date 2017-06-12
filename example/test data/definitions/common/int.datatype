@@ -1,0 +1,16 @@
+{
+  "__type": "datatype",
+  "__id": "7c5f0a6c-1a0e-42c1-99f1-ad1fd346303d",
+  "name": "int",
+  "validators": [
+    {
+      "validator": "c88963aa-c44d-461d-a4f7-b5ac5f5d9654",
+      "args": [
+        200
+      ]
+    }
+  ],
+  "initValue": "0",
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }"
+}

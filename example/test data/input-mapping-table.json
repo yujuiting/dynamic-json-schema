@@ -1,0 +1,290 @@
+[
+  {
+    "Name": "K-MoveForward",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "MoveForward",
+    "Input": {
+      "KeyName": "W"
+    },
+    "IsAxis": true,
+    "Scale": 1,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "K-MoveBackward",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "MoveBackward",
+    "Input": {
+      "KeyName": "S"
+    },
+    "IsAxis": true,
+    "Scale": -1,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "K-MoveRight",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "MoveRight",
+    "Input": {
+      "KeyName": "D"
+    },
+    "IsAxis": true,
+    "Scale": 1,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "K-MoveLeft",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "MoveLeft",
+    "Input": {
+      "KeyName": "A"
+    },
+    "IsAxis": true,
+    "Scale": -1,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "M-MoveCameraHorizontal",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "CameraMoveHorizontal",
+    "Input": {
+      "KeyName": "MouseX"
+    },
+    "IsAxis": true,
+    "Scale": 1,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "M-MoveCameraVertical",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "CameraMoveVertical",
+    "Input": {
+      "KeyName": "MouseY"
+    },
+    "IsAxis": true,
+    "Scale": -1,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "K-MoveCameraUp",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "CameraMoveVertical",
+    "Input": {
+      "KeyName": "Up"
+    },
+    "IsAxis": true,
+    "Scale": 1,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "K-MoveCameraDown",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "CameraMoveVertical",
+    "Input": {
+      "KeyName": "Down"
+    },
+    "IsAxis": true,
+    "Scale": -1,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "K-MoveCameraRight",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "CameraMoveHorizontal",
+    "Input": {
+      "KeyName": "Right"
+    },
+    "IsAxis": true,
+    "Scale": -1,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "K-MoveCameraLeft",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "CameraMoveHorizontal",
+    "Input": {
+      "KeyName": "Left"
+    },
+    "IsAxis": true,
+    "Scale": 1,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "K-Dash",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "Dash",
+    "Input": {
+      "KeyName": "LeftShift"
+    },
+    "IsAxis": false,
+    "Scale": 0,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "K-Dodge",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "Dodge",
+    "Input": {
+      "KeyName": "SpaceBar"
+    },
+    "IsAxis": false,
+    "Scale": 0,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "M-Weapon_1_Skill_A",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "Weapon_1_Skill_A",
+    "Input": {
+      "KeyName": "LeftMouseButton"
+    },
+    "IsAxis": false,
+    "Scale": 0,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "M-Weapon_2_Skill_A",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "Weapon_2_Skill_A",
+    "Input": {
+      "KeyName": "RightMouseButton"
+    },
+    "IsAxis": false,
+    "Scale": 0,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "K-Weapon_1_Skill_B",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "Weapon_1_Skill_B",
+    "Input": {
+      "KeyName": "F"
+    },
+    "IsAxis": false,
+    "Scale": 0,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "K-Weapon_2_Skill_B",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "Weapon_2_Skill_B",
+    "Input": {
+      "KeyName": "G"
+    },
+    "IsAxis": false,
+    "Scale": 0,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "K-LockCamera",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "LockCamera",
+    "Input": {
+      "KeyName": "LeftAlt"
+    },
+    "IsAxis": false,
+    "Scale": 0,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  },
+  {
+    "Name": "K-Interact",
+    "ControllerType": "KeyboardAndMouse",
+    "Category": "None",
+    "ContextType": "Scene",
+    "Command": "Interact",
+    "Input": {
+      "KeyName": "E"
+    },
+    "IsAxis": false,
+    "Scale": 0,
+    "PressingShift": false,
+    "PressingCtrl": false,
+    "PressingAtl": false,
+    "PressingCmd": false
+  }
+]

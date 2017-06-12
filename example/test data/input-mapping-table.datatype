@@ -1,0 +1,12 @@
+{
+  "__type": "datatype(array)",
+  "__id": "1a6c3d00-dbbb-4159-8935-00fa946a7c64",
+  "name": "input-mapping-table",
+  "validators": [
+    {
+      "validator": "#is-array",
+      "args": []
+    }
+  ],
+  "dataType": "aa3ea628-68a5-4a47-8f79-fed2b9f2d5f6"
+}

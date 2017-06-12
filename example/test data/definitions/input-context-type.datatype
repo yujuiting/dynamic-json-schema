@@ -1,0 +1,13 @@
+{
+  "__type": "datatype",
+  "__id": "f95164f8-d81e-485c-bb89-97b8a39f7eef",
+  "name": "input-context-type",
+  "validators": [
+    {
+      "validator": "#is-contained-in",
+      "args": [
+        "[Scene,UI]"
+      ]
+    }
+  ]
+}

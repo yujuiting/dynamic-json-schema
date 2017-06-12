@@ -1,0 +1,35 @@
+{
+  "__type": "datatype(struct)",
+  "__id": "4405fb0d-5932-4342-a1c8-7b799f4696f5",
+  "name": "timeline",
+  "validators": [],
+  "initValue": null,
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }",
+  "properties": [
+    {
+      "__type": "property",
+      "__id": "47f6d708-fba2-4eca-ba18-3422737dfcb8",
+      "name": "Name",
+      "dataType": "907e32ae-ca24-4475-86ff-4d62ed8d19f6",
+      "allowNull": false,
+      "initValue": "\"Unnamed Timeline\""
+    },
+    {
+      "__type": "property",
+      "__id": "6b9acd96-0925-45ae-9612-d0701be4e31c",
+      "name": "FPS",
+      "dataType": "fdb212b8-4e0a-4ec4-8bce-e374fd51973f",
+      "allowNull": false,
+      "initValue": "30"
+    },
+    {
+      "__type": "property",
+      "__id": "90fcde19-d1f3-457c-b732-27c0213643a5",
+      "name": "Keyframe",
+      "dataType": "5c21917c-d108-40f9-aa05-5a2972afe766",
+      "allowNull": false,
+      "initValue": "{}"
+    }
+  ]
+}

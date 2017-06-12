@@ -1,0 +1,13 @@
+{
+  "__type": "datatype(array)",
+  "__id": "9f0005f4-5caa-4741-aafe-79af461db571",
+  "name": "timeline_table",
+  "validators": [
+    {
+      "validator": "#is-array",
+      "args": []
+    }
+  ],
+  "initValue": null,
+  "dataType": "4405fb0d-5932-4342-a1c8-7b799f4696f5"
+}

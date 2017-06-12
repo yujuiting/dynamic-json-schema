@@ -1,0 +1,27 @@
+{
+  "__type": "datatype(struct)",
+  "__id": "865cd422-7c91-42be-9cd0-213732ad2026",
+  "name": "number_frame",
+  "validators": [],
+  "initValue": null,
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }",
+  "properties": [
+    {
+      "__type": "property",
+      "__id": "5d10e2ed-0441-413b-9d28-6340db6d61e2",
+      "name": "Frame",
+      "dataType": "fdb212b8-4e0a-4ec4-8bce-e374fd51973f",
+      "allowNull": false,
+      "initValue": "0"
+    },
+    {
+      "__type": "property",
+      "__id": "6660aa39-9bd5-4a16-9fbc-b0f162637c2f",
+      "name": "Value",
+      "dataType": "fdb212b8-4e0a-4ec4-8bce-e374fd51973f",
+      "allowNull": false,
+      "initValue": "-1"
+    }
+  ]
+}

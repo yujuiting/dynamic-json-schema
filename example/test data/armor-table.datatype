@@ -1,0 +1,13 @@
+{
+  "__type": "datatype(array)",
+  "__id": "0a172a56-ab9c-4eff-b1c4-385c47fc94df",
+  "name": "armor-tableg",
+  "validators": [
+    {
+      "validator": "#is-array",
+      "args": []
+    }
+  ],
+  "initValue": null,
+  "dataType": "9470554e-5fc2-4e22-80b4-227b3193564e"
+}

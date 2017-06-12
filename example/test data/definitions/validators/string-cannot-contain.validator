@@ -1,0 +1,7 @@
+{
+  "__type": "validator",
+  "__id": "c262492d-68a3-45cf-a0e0-4b88a614ccac",
+  "name": "string-cannot-contain",
+  "fn": "function (value, list) {\n  list = Array.isArray(list) ? list : [];\n  return list.every(function (item) {\n    return value.indexOf(item) === -1;\n  });\n}",
+  "errorMessage": "{value} cannot contain {list}"
+}

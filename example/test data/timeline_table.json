@@ -1,0 +1,94 @@
+[
+  {
+    "Name": "FirstObject",
+    "FPS": 30,
+    "Keyframe": {
+      "NumVal": [
+        {
+          "Frame": 10,
+          "Value": 123
+        },
+        {
+          "Frame": 22,
+          "Value": 435
+        }
+      ],
+      "StrVal": [
+        {
+          "Frame": 19,
+          "Value": "asd"
+        }
+      ]
+    }
+  },
+  {
+    "Name": "Object2",
+    "FPS": 30,
+    "Keyframe": {
+      "NumVal": [
+        {
+          "Frame": 7,
+          "Value": 111
+        },
+        {
+          "Frame": 19,
+          "Value": 222
+        },
+        {
+          "Frame": 34,
+          "Value": 333
+        }
+      ],
+      "StrVal": [
+        {
+          "Frame": 8,
+          "Value": "345345"
+        },
+        {
+          "Frame": 21,
+          "Value": "v"
+        },
+        {
+          "Frame": 37,
+          "Value": "ccc"
+        },
+        {
+          "Frame": 97,
+          "Value": "null"
+        }
+      ]
+    }
+  },
+  {
+    "Name": "Unnamed object",
+    "FPS": 30,
+    "Keyframe": {
+      "NumVal": [
+        {
+          "Frame": 12,
+          "Value": -1
+        },
+        {
+          "Frame": 21,
+          "Value": -1
+        },
+        {
+          "Frame": 29,
+          "Value": -1
+        }
+      ],
+      "StrVal": [
+        {
+          "Frame": 10,
+          "Value": "rtetet"
+        }
+      ],
+      "Float2Val": [
+        {
+          "Frame": 10,
+          "Value": "{123111,456}"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,85 @@
+{
+  "__type": "datatype(struct)",
+  "__id": "aa3ea628-68a5-4a47-8f79-fed2b9f2d5f6",
+  "name": "input-mapping",
+  "validators": [],
+  "properties": [
+    {
+      "__type": "property",
+      "__id": "d11e14cb-817c-4659-b218-43760163174c",
+      "name": "Name",
+      "dataType": "907e32ae-ca24-4475-86ff-4d62ed8d19f6",
+      "allowNull": false
+    },
+    {
+      "__type": "property",
+      "__id": "75497602-261d-4398-b482-3df938f6e4ca",
+      "name": "ControllerType",
+      "dataType": "caf39573-1081-4102-88e3-5f8327da37cd",
+      "allowNull": false
+    },
+    {
+      "__type": "property",
+      "__id": "3c0827c0-8010-4712-914e-d5fd0ef2f886",
+      "name": "Category",
+      "dataType": "907e32ae-ca24-4475-86ff-4d62ed8d19f6",
+      "allowNull": false
+    },
+    {
+      "__type": "property",
+      "__id": "6f392e61-3533-4cf7-b0e2-b71ce106d611",
+      "name": "ContextType",
+      "dataType": "907e32ae-ca24-4475-86ff-4d62ed8d19f6",
+      "allowNull": false
+    },
+    {
+      "__type": "property",
+      "__id": "e9496182-25a4-4a2f-acf2-71f648bd885f",
+      "name": "Command",
+      "dataType": "907e32ae-ca24-4475-86ff-4d62ed8d19f6",
+      "allowNull": false
+    },
+    {
+      "__type": "property",
+      "__id": "a2936730-e138-4f91-9632-7eb5f47f1150",
+      "name": "IsAxis",
+      "dataType": "c47291e3-ad36-41a9-82cc-f5f92fb3b038",
+      "allowNull": false
+    },
+    {
+      "__type": "property",
+      "__id": "18ce479e-d8c5-4872-b030-fde9c64494f2",
+      "name": "Scale",
+      "dataType": "fdb212b8-4e0a-4ec4-8bce-e374fd51973f",
+      "allowNull": false
+    },
+    {
+      "__type": "property",
+      "__id": "cb1fb152-5712-4545-81c3-d90ab4fe3151",
+      "name": "PressingShift",
+      "dataType": "c47291e3-ad36-41a9-82cc-f5f92fb3b038",
+      "allowNull": false
+    },
+    {
+      "__type": "property",
+      "__id": "3798fccf-81af-4ac5-81a1-231fe31c18c0",
+      "name": "PressingCtrl",
+      "dataType": "c47291e3-ad36-41a9-82cc-f5f92fb3b038",
+      "allowNull": false
+    },
+    {
+      "__type": "property",
+      "__id": "ba1fcb7d-c476-46fc-8664-155558348aa5",
+      "name": "PressingAtl",
+      "dataType": "c47291e3-ad36-41a9-82cc-f5f92fb3b038",
+      "allowNull": false
+    },
+    {
+      "__type": "property",
+      "__id": "0d90193c-928f-48e3-985f-57478b82af88",
+      "name": "PressingCmd",
+      "dataType": "c47291e3-ad36-41a9-82cc-f5f92fb3b038",
+      "allowNull": false
+    }
+  ]
+}
