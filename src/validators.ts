@@ -58,7 +58,7 @@ export const isNumber: DefineValidator = new DefineValidator(
 
 export const isObject: DefineValidator = new DefineValidator(
   'is-object',
-  (value: any) => typeof value === 'object',
+  (value: any) => value !== null && typeof value === 'object',
   'Value {value} should be an object.',
   false
 );
