@@ -21,7 +21,7 @@ export class DefineArray extends DefineDataType {
   dataType: WeakDataType = new WeakDataType(this.schema);
 
   constructor(name: string, dataType: DefineDataType|WeakDataType) {
-    super(name, [validators.isArray]);
+    super(name);
     (<any>this).__type = 'datatype(array)';
     this.setDataType(dataType);
   }

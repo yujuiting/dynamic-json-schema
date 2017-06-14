@@ -33,7 +33,7 @@ export class DefineStruct extends DefineDataType {
   properties: DefineProperty[] = [];
 
   constructor(name: string, properties?: DefinePropertyMap | DefineProperty[]) {
-    super(name, [isObject]);
+    super(name);
     (<any>this).__type = 'datatype(struct)';
 
     if (Array.isArray(properties)) {
