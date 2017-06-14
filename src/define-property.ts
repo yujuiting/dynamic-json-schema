@@ -62,7 +62,14 @@ export class DefineProperty extends DefineObject {
   }
 
   getInitValue(): any {
-    return eval(`(${ this.initValue })`);
+    let initValue = eval(`(${ this.initValue })`);
+    if (initValue === null || initValue === void 0) {
+      const dataType = this.dataType.get();
+      if (dataType) {
+        initValue = dataType.getInitValue();
+      }
+    }
+    return initValue;
   }
 
 
