@@ -18,7 +18,8 @@
           "Frame": 19,
           "Value": "asd"
         }
-      ]
+      ],
+      "Float2Val": []
     }
   },
   {
@@ -56,6 +57,12 @@
           "Frame": 97,
           "Value": "null"
         }
+      ],
+      "Float2Val": [
+        {
+          "Frame": 5,
+          "Value": "{0,0}"
+        }
       ]
     }
   },
@@ -65,7 +72,7 @@
     "Keyframe": {
       "NumVal": [
         {
-          "Frame": 12,
+          "Frame": 11,
           "Value": -1
         },
         {
@@ -80,13 +87,13 @@
       "StrVal": [
         {
           "Frame": 10,
-          "Value": "rtetet"
+          "Value": "hjkhjk"
         }
       ],
       "Float2Val": [
         {
-          "Frame": 10,
-          "Value": "{123111,456}"
+          "Frame": 12,
+          "Value": "{102,111}"
         }
       ]
     }

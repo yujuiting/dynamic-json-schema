@@ -3,6 +3,9 @@
   "__id": "aa3ea628-68a5-4a47-8f79-fed2b9f2d5f6",
   "name": "input-mapping",
   "validators": [],
+  "initValue": "{ Name:\"\", ControllerType:\"KeyboardAndMouse\", Category:\"\", ContextType:\"\", Command:\"\", IsAxis:false, Scale:0, PressingShift:false, PressingCtrl:false, PressingAtl:false, PressingCmd:false }",
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }",
   "properties": [
     {
       "__type": "property",

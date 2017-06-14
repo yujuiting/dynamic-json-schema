@@ -12,7 +12,7 @@
       "args": []
     }
   ],
-  "initValue": "{ \"Name\": \"Unnameed Skill\", \"AnimationID\": -1 }",
+  "initValue": "{ Name:\"\", AnimationID:-1, AnInt:0 }",
   "serialize": "function (value) { return value; }",
   "deserialize": "function (value) { return value; }",
   "properties": [

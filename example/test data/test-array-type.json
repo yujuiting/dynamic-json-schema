@@ -1,0 +1,25 @@
+{
+  "arr": [
+    {
+      "Timestamp": 0,
+      "SomeProperty": 1,
+      "AnotherProperty": "",
+      "B": "KeyboardAndMouse",
+      "C": true,
+      "D": "",
+      "Weapon": {
+        "type": 1,
+        "name": ""
+      },
+      "A": {
+        "Name": "",
+        "def": 0
+      },
+      "E": {
+        "Name": "",
+        "AnimationID": -1,
+        "AnInt": 0
+      }
+    }
+  ]
+}

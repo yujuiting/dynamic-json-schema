@@ -2,11 +2,9 @@
   "__type": "datatype(array)",
   "__id": "38faf572-2e2a-4024-ad2c-b7d81764f210",
   "name": "armor-table",
-  "validators": [
-    {
-      "validator": "286a21f8-6ba1-4198-8607-73fbd627919b",
-      "args": []
-    }
-  ],
+  "validators": [],
+  "initValue": null,
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }",
   "dataType": ""
 }

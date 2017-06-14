@@ -2,12 +2,9 @@
   "__type": "datatype(array)",
   "__id": "a6456948-10e2-4d1e-a83f-836296062112",
   "name": "string_frame_list",
-  "validators": [
-    {
-      "validator": "#is-array",
-      "args": []
-    }
-  ],
+  "validators": [],
   "initValue": null,
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }",
   "dataType": "0b5d8a3b-d78c-4a96-897f-1ba0805039ec"
 }

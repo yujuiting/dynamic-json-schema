@@ -14,5 +14,7 @@
       ]
     }
   ],
-  "initValue": "\"\""
+  "initValue": "\"\"",
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }"
 }

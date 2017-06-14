@@ -1,0 +1,19 @@
+{
+  "__type": "datatype(struct)",
+  "__id": "c1c59d59-9b33-4522-99e0-e953b7ac0b40",
+  "name": "test-array-typeh",
+  "validators": [],
+  "initValue": "{arr:[]}",
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }",
+  "properties": [
+    {
+      "__type": "property",
+      "__id": "bc56350a-764d-4737-88ba-49293c5d64b6",
+      "name": "arr",
+      "dataType": "19325d3b-e05c-403a-90a3-b38f022933f0",
+      "allowNull": false,
+      "initValue": "[]"
+    }
+  ]
+}

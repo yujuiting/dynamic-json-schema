@@ -2,12 +2,9 @@
   "__type": "datatype(array)",
   "__id": "19325d3b-e05c-403a-90a3-b38f022933f0",
   "name": "AKeyframes",
-  "validators": [
-    {
-      "validator": "#is-array",
-      "args": []
-    }
-  ],
+  "validators": [],
   "initValue": null,
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }",
   "dataType": "3c6fb78a-f6a2-420a-9fa2-6fd9fc395fd6"
 }

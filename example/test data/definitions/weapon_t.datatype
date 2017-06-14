@@ -3,6 +3,9 @@
   "__id": "62c8cfbb-57fa-465d-a434-76e7595cfd48",
   "name": "weapon_t",
   "validators": [],
+  "initValue": "{ type:null, name:\"\" }",
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }",
   "properties": [
     {
       "__type": "property",

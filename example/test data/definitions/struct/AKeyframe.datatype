@@ -3,7 +3,9 @@
   "__id": "3c6fb78a-f6a2-420a-9fa2-6fd9fc395fd6",
   "name": "AKeyframe",
   "validators": [],
-  "initValue": null,
+  "initValue": "{ Timestamp:0, SomeProperty:0, AnotherProperty:\"\", B:\"KeyboardAndMouse\", C:false, D:\"\" }",
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }",
   "properties": [
     {
       "__type": "property",

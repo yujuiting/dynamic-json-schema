@@ -2,11 +2,9 @@
   "__type": "datatype(array)",
   "__id": "025ba1fa-3756-42ab-aaa1-86a449cd82a5",
   "name": "skill-object-table",
-  "validators": [
-    {
-      "validator": "#is-array",
-      "args": []
-    }
-  ],
+  "validators": [],
+  "initValue": null,
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }",
   "dataType": "13f1673d-500a-4676-bffb-31f693c8b0c4"
 }

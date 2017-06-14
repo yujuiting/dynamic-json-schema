@@ -3,6 +3,9 @@
   "__id": "9470554e-5fc2-4e22-80b4-227b3193564e",
   "name": "armor",
   "validators": [],
+  "initValue": "{ Name:\"\", def:0 }",
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }",
   "properties": [
     {
       "__type": "property",

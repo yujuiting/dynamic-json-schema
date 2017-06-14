@@ -3,7 +3,9 @@
   "__id": "77456695-76f0-4d31-b558-388d0897d6fd",
   "name": "ATimeline",
   "validators": [],
-  "initValue": null,
+  "initValue": "{ Name:\"\", FPS:30, Keyframes: }",
+  "serialize": "function (value) { return value; }",
+  "deserialize": "function (value) { return value; }",
   "properties": [
     {
       "__type": "property",

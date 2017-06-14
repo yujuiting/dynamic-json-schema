@@ -3,7 +3,7 @@
   "__id": "865cd422-7c91-42be-9cd0-213732ad2026",
   "name": "number_frame",
   "validators": [],
-  "initValue": null,
+  "initValue": "{ Frame:0, Value:-1 }",
   "serialize": "function (value) { return value; }",
   "deserialize": "function (value) { return value; }",
   "properties": [

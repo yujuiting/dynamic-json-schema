@@ -2,12 +2,7 @@
   "__type": "datatype(array)",
   "__id": "e617a146-8276-4bdb-8170-2668481c21aa",
   "name": "float2_frame_list",
-  "validators": [
-    {
-      "validator": "#is-array",
-      "args": []
-    }
-  ],
+  "validators": [],
   "initValue": "[]",
   "serialize": "function (value) { return value; }",
   "deserialize": "function (value) { return value; }",
