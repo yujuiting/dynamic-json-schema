@@ -3,7 +3,7 @@
   "__id": "3c6fb78a-f6a2-420a-9fa2-6fd9fc395fd6",
   "name": "AKeyframe",
   "validators": [],
-  "initValue": "{ Timestamp:0, SomeProperty:0, AnotherProperty:\"\", B:\"KeyboardAndMouse\", C:false, D:\"\" }",
+  "initValue": "{\n  Timestamp: 0,\n  SomeProperty: 0,\n  AnotherProperty: \"\",\n  Weapon: {\n    type: null,\n    name: \"\"\n  },\n  A: {\n    Name: \"\",\n    def: 0\n  },\n  B: \"KeyboardAndMouse\",\n  C: false,\n  D: \"\",\n  E: {\n    Name: \"\",\n    AnimationID: -1,\n    AnInt: 0\n  }\n}",
   "serialize": "function (value) { return value; }",
   "deserialize": "function (value) { return value; }",
   "properties": [
