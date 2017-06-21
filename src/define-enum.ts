@@ -9,7 +9,7 @@ export interface DefineEnumJSON extends DefineDataTypeJSON {
 
 export interface DefineEnumOption {
   key: string;
-  value: number;
+  value: string;
 }
 
 const builtInValidator = new DefineValidator(
@@ -39,9 +39,9 @@ export class DefineEnum extends DefineDataType {
     (<any>this).__type = 'datatype(enum)';
   }
 
-  addOption(key: string, value: number): this;
+  addOption(key: string, value: string): this;
   addOption(option: DefineEnumOption): this;
-  addOption(keyOrOption: string|DefineEnumOption, value?: number): this {
+  addOption(keyOrOption: string|DefineEnumOption, value?: string): this {
     let key: string;
 
     if (typeof keyOrOption === 'string') {
